@@ -1,0 +1,26 @@
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agneya</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+    <h1 class="text-center text-primary"><a href="/agneya" style="text-decoration:none">Agneya</a></h1><hr>
+
+
+    {% block content %}
+        <div class="col-lg-4 col-lg-offset-4 text-center">
+                {% crispy form %}
+        </div>
+    {% endblock %}
+
+
+</body>
+</html>
