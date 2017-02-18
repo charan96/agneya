@@ -8,9 +8,15 @@ def index(request):
 		form = formClass(data=request.POST)
 
 		if form.is_valid():
-			sunrise_time = str(request.POST.get('sunrise-hour', '')) + str(request.POST.get('sunrise-min', '')) + \
-					   str(request.POST.get('sunrise-sec', ''))
-			sunset_time = str(request.POST.get('sunset-hour', '')) + str(request.POST.get('sunset-min', '')) + \
-					  str(request.POST.get('sunset-sec', ''))
-			return render(request, 'trial.html', {'form': submit_form})
+			# %H-%M-%S formatted time
+			sunrise_time = '-'.join([str(request.POST.get('sunrise_hour', '')),
+							 str(request.POST.get('sunrise_min', '')),
+							 str(request.POST.get('sunrise_sec', ''))])
+
+			sunset_time = '-'.join([str(request.POST.get('sunset_hour', '')),
+							str(request.POST.get('sunset_min', '')),
+							str(request.POST.get('sunset_sec', ''))])
+
+			return render(request, 'hoara.html', {'sunrise_time': sunrise_time, 'sunset_time': sunset_time})
+
 	return render(request, 'index.html', {'form': submit_form})
