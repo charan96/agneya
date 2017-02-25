@@ -121,4 +121,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '~/python/misc/gae-trial'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

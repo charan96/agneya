@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import submit_form
+import helpers
 
 
 def index(request):
@@ -17,6 +18,12 @@ def index(request):
 							str(request.POST.get('sunset_min', '')),
 							str(request.POST.get('sunset_sec', ''))])
 
-			return render(request, 'hoara.html', {'sunrise_time': sunrise_time, 'sunset_time': sunset_time})
+			return hoara(request, sunrise_time, sunset_time)
 
 	return render(request, 'index.html', {'form': submit_form})
+
+
+def hoara(request, sunrise, sunset):
+	hoara_list = helpers.makeHoaraList(sunrise, sunset)
+
+	return render(request, 'hoara.html', {'sunrise_time': sunrise, 'sunset_time': sunset, 'hoara_list': hoara_list})
