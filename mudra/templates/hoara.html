@@ -14,12 +14,45 @@
 <body>
     <h1 class="text-center text-primary"><a href="/agneya" style="text-decoration:none">Agneya</a></h1><hr>
 
-    <p align="center">{{ sunrise_time }}</p>
+    <!--<p align="center">{{ sunrise_time }}</p>
     <p align="center">{{ sunset_time }}</p>
 
     {% for item in hoara_list %}
         <p>{{ item }}</p>
-    {% endfor %}
+    {% endfor %}-->
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                   <tr>
+                       <th>Start Time</th>
+                       <th>End Time</th>
+                       <th>Sunday</th>
+                       <th>Monday</th>
+                       <th>Tuesday</th>
+                       <th>Wednesday</th>
+                       <th>Thursday</th>
+                       <th>Friday</th>
+                       <th>Saturday</th>
+                   </tr>
+            </thead>
+            <tbody>
+                {% for start_time, end_time, sun, mon, tue, wed, thu, fri, sat in zipped_list %}
+                <tr>
+                    <td>{{ start_time }}</td>
+                    <td>{{ end_time }}</td>
+                    <td>{{ sun }}</td>
+                    <td>{{ mon }}</td>
+                    <td>{{ tue }}</td>
+                    <td>{{ wed }}</td>
+                    <td>{{ thu }}</td>
+                    <td>{{ fri }}</td>
+                    <td>{{ sat }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
 
 
 </body>
