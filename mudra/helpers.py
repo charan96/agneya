@@ -1,4 +1,4 @@
-import datetime
+import datetime, sys
 
 
 def convertStringToDatetime(time_string):
@@ -13,7 +13,18 @@ def convertTimeDeltaToString(timedelta_object):
 	return datetime.time(0, 0, timedelta_object.seconds).strftime('%H-%M-%S')
 
 
-def getHoaraTime(sunrise, sunset):
+def sanitizeTimes(sunrise, sunset):
+	sunrise = convertStringToDatetime(sunrise)
+	sunset = convertStringToDatetime(sunset)
+
+	if (sunset - sunrise) > datetime.timedelta(hours=4) and sunset > sunrise:
+		pass
+	else:
+		# TODO: redirect to error page
+		sys.exit(0)
+
+
+def getDayHoaraTime(sunrise, sunset):
 	sunrise = convertStringToDatetime(sunrise)
 	sunset = convertStringToDatetime(sunset)
 
@@ -23,11 +34,29 @@ def getHoaraTime(sunrise, sunset):
 	return day_hoara
 
 
+def getNightHoaraTime(sunrise, sunset):
+	sunrise = convertStringToDatetime(sunrise)
+	sunset = convertStringToDatetime(sunset)
+
+	night_hoara = (datetime.timedelta(hours=24) - (sunset - sunrise)) / 12
+	night_hoara = night_hoara - datetime.timedelta(microseconds=night_hoara.microseconds)
+
+	return night_hoara
+
+
 def makeHoaraList(sunrise, sunset):
-	day_hoara = getHoaraTime(sunrise, sunset)
+	day_hoara = getDayHoaraTime(sunrise, sunset)
+	night_hoara = getNightHoaraTime(sunrise, sunset)
 	hoara_list = [sunrise, ]
 
-	for i in range(0, 24):
+	for i in range(0, 11):
 		hoara_list.append(convertDatetimeToString(convertStringToDatetime(hoara_list[-1]) + day_hoara))
+
+	hoara_list.append(sunset)
+
+	for i in range(0, 11):
+		hoara_list.append(convertDatetimeToString(convertStringToDatetime(hoara_list[-1]) + night_hoara))
+
+	hoara_list.append(sunrise)
 
 	return hoara_list

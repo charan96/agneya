@@ -18,6 +18,8 @@ def index(request):
 							str(request.POST.get('sunset_min', '')),
 							str(request.POST.get('sunset_sec', ''))])
 
+			helpers.sanitizeTimes(sunrise_time, sunset_time)
+
 			return hoara(request, sunrise_time, sunset_time)
 
 	return render(request, 'index.html', {'form': submit_form})
