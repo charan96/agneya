@@ -1,5 +1,6 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
+{% load getDictVal %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@
     {% endfor %}-->
 
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-bordered text-center table-hover">
             <thead>
                    <tr>
                        <th>Start Time</th>
@@ -39,15 +40,65 @@
             <tbody>
                 {% for start_time, end_time, sun, mon, tue, wed, thu, fri, sat in zipped_list %}
                 <tr>
-                    <td>{{ start_time }}</td>
-                    <td>{{ end_time }}</td>
-                    <td>{{ sun }}</td>
-                    <td>{{ mon }}</td>
-                    <td>{{ tue }}</td>
-                    <td>{{ wed }}</td>
-                    <td>{{ thu }}</td>
-                    <td>{{ fri }}</td>
-                    <td>{{ sat }}</td>
+                    <td class="lead">{{ start_time }}</td>
+                    <td class="lead">{{ end_time }}</td>
+
+                    {% if hoara_dict|getDictVal:sun == "Good" %}
+                        <td class="lead text-success">{{ hoara_dict|getDictVal:sun }}</td>
+                    {% elif hoara_dict|getDictVal:sun == "Neutral" %}
+                        <td class="lead text-info">{{ hoara_dict|getDictVal:sun }}</td>
+                    {% elif hoara_dict|getDictVal:sun == "Bad" %}
+                        <td class="lead text-danger">{{ hoara_dict|getDictVal:sun }}</td>
+                    {% endif %}
+
+                    {% if hoara_dict|getDictVal:mon == "Good" %}
+                        <td class="lead text-success">{{ hoara_dict|getDictVal:mon }}</td>
+                    {% elif hoara_dict|getDictVal:mon == "Neutral" %}
+                        <td class="lead text-info">{{ hoara_dict|getDictVal:mon }}</td>
+                    {% elif hoara_dict|getDictVal:mon == "Bad" %}
+                        <td class="lead text-danger">{{ hoara_dict|getDictVal:mon }}</td>
+                    {% endif %}
+
+                    {% if hoara_dict|getDictVal:tue == "Good" %}
+                        <td class="lead text-success">{{ hoara_dict|getDictVal:tue }}</td>
+                    {% elif hoara_dict|getDictVal:tue == "Neutral" %}
+                        <td class="lead text-info">{{ hoara_dict|getDictVal:tue }}</td>
+                    {% elif hoara_dict|getDictVal:tue == "Bad" %}
+                        <td class="lead text-danger">{{ hoara_dict|getDictVal:tue }}</td>
+                    {% endif %}
+
+                    {% if hoara_dict|getDictVal:wed == "Good" %}
+                        <td class="lead text-success">{{ hoara_dict|getDictVal:wed }}</td>
+                    {% elif hoara_dict|getDictVal:wed == "Neutral" %}
+                        <td class="lead text-info">{{ hoara_dict|getDictVal:wed }}</td>
+                    {% elif hoara_dict|getDictVal:wed == "Bad" %}
+                        <td class="lead text-danger">{{ hoara_dict|getDictVal:wed }}</td>
+                    {% endif %}
+
+                    {% if hoara_dict|getDictVal:thu == "Good" %}
+                        <td class="lead text-success">{{ hoara_dict|getDictVal:thu }}</td>
+                    {% elif hoara_dict|getDictVal:thu == "Neutral" %}
+                        <td class="lead text-info">{{ hoara_dict|getDictVal:thu }}</td>
+                    {% elif hoara_dict|getDictVal:thu == "Bad" %}
+                        <td class="lead text-danger">{{ hoara_dict|getDictVal:thu }}</td>
+                    {% endif %}
+
+                    {% if hoara_dict|getDictVal:fri == "Good" %}
+                        <td class="lead text-success">{{ hoara_dict|getDictVal:fri }}</td>
+                    {% elif hoara_dict|getDictVal:fri == "Neutral" %}
+                        <td class="lead text-info">{{ hoara_dict|getDictVal:fri }}</td>
+                    {% elif hoara_dict|getDictVal:fri == "Bad" %}
+                        <td class="lead text-danger">{{ hoara_dict|getDictVal:fri }}</td>
+                    {% endif %}
+
+                    {% if hoara_dict|getDictVal:sat == "Good" %}
+                        <td class="lead text-success">{{ hoara_dict|getDictVal:sat }}</td>
+                    {% elif hoara_dict|getDictVal:sat == "Neutral" %}
+                        <td class="lead text-info">{{ hoara_dict|getDictVal:sat }}</td>
+                    {% elif hoara_dict|getDictVal:sat == "Bad" %}
+                        <td class="lead text-danger">{{ hoara_dict|getDictVal:sat }}</td>
+                    {% endif %}
+
                 </tr>
                 {% endfor %}
 

@@ -10,11 +10,11 @@ def index(request):
 
 		if form.is_valid():
 			# %H-%M-%S formatted time
-			sunrise_time = '-'.join([str(request.POST.get('sunrise_hour', '')),
+			sunrise_time = ':'.join([str(request.POST.get('sunrise_hour', '')),
 							 str(request.POST.get('sunrise_min', '')),
 							 str(request.POST.get('sunrise_sec', ''))])
 
-			sunset_time = '-'.join([str(request.POST.get('sunset_hour', '')),
+			sunset_time = ':'.join([str(request.POST.get('sunset_hour', '')),
 							str(request.POST.get('sunset_min', '')),
 							str(request.POST.get('sunset_sec', ''))])
 
@@ -29,8 +29,6 @@ def hoara(request, sunrise, sunset):
 	hoara_list = helpers.makeHoaraTimesList(sunrise, sunset)
 	start_times = hoara_list[:-1]
 	end_times = hoara_list[1:]
-
-	# zipped_times = zip(start_times, end_times)
 
 	week_hoaras, hoara_dict = helpers.getWeekHoaraList()
 

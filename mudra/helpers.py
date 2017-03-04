@@ -2,15 +2,15 @@ import datetime, sys
 
 
 def convertStringToDatetime(time_string):
-	return datetime.datetime.strptime(time_string, '%H-%M-%S')
+	return datetime.datetime.strptime(time_string, '%H:%M:%S')
 
 
 def convertDatetimeToString(datetime_object):
-	return datetime.datetime.strftime(datetime_object, '%H-%M-%S')
+	return datetime.datetime.strftime(datetime_object, '%H:%M:%S')
 
 
 def convertTimeDeltaToString(timedelta_object):
-	return datetime.time(0, 0, timedelta_object.seconds).strftime('%H-%M-%S')
+	return datetime.time(0, 0, timedelta_object.seconds).strftime('%H:%M:%S')
 
 
 def sanitizeTimes(sunrise, sunset):
@@ -74,16 +74,14 @@ def getWeekHoaraList():
 			  'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus',
 			  'Mercury', 'Moon', 'Saturn']
 	thu_hoaras = ['Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus',
-			  'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'ercury', 'Moon', 'Saturn',
+			  'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon', 'Saturn',
 			  'Jupiter', 'Mars', 'Sun']
 	fri_hoaras = ['Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon',
-			  'Saturn',
-			  'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus',
-			  'Mercury', 'Moon']
+			  'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars',
+			  'Sun', 'Venus', 'Mercury', 'Moon']
 	sat_hoaras = ['Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun',
 			  'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon',
-			  'Saturn',
-			  'Jupiter', 'Mars']
+			  'Saturn', 'Jupiter', 'Mars']
 
 	hoara_dict = {'Sun': 'Neutral', 'Venus': 'Good', 'Mercury': 'Good', 'Moon': 'Good', 'Saturn': 'Bad',
 			  'Jupiter': 'Good', 'Mars': 'Bad'}
