@@ -20,6 +20,19 @@ def convert24HourTimeStringTo12HourTimeString(time_string):
 	return temp
 
 
+def formChoicesHourList():
+	temp_list = ['12 AM', ]
+	for x in range(1, 12):
+		temp_list.append(str(x) + " AM")
+
+	temp_list.append('12 PM')
+
+	for x in range(13, 24):
+		temp_list.append(str(x % 12) + " PM")
+
+	return temp_list
+
+
 def sanitizeTimes(sunrise, sunset):
 	sunrise = convertStringToDatetime(sunrise)
 	sunset = convertStringToDatetime(sunset)
@@ -67,6 +80,14 @@ def makeHoaraTimesList(sunrise, sunset):
 	return hoara_list
 
 
+def getTeluguHoaraDict():
+	telugu_hoaras = {'Sun': u'\u0C38\u0C42', 'Venus': u'\u0C36\u0C41', 'Mercury': u'\u0C2C\u0C41',
+			     'Moon': u'\u0C1A\u0C02', 'Saturn': u'\u0C36', 'Jupiter': u'\u0C17\u0C41',
+			     'Mars': u'\u0C15\u0C41'}
+
+	return telugu_hoaras
+
+
 def getWeekHoaraList():
 	sun_hoaras = ['Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon',
 			  'Saturn', 'Jupiter', 'Mars', 'Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars', 'Sun',
@@ -95,4 +116,6 @@ def getWeekHoaraList():
 
 	week_hoaras = [sun_hoaras, mon_hoaras, tue_hoaras, wed_hoaras, thu_hoaras, fri_hoaras, sat_hoaras]
 
-	return week_hoaras, hoara_dict
+	telugu_hoaras = getTeluguHoaraDict()
+
+	return week_hoaras, hoara_dict, telugu_hoaras

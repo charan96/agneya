@@ -30,7 +30,7 @@ def hoara(request, sunrise, sunset):
 	start_times = hoara_list[:-1]
 	end_times = hoara_list[1:]
 
-	week_hoaras, hoara_dict = helpers.getWeekHoaraList()
+	week_hoaras, hoara_dict, telugu_hoaras = helpers.getWeekHoaraList()
 
 	zipped_list = [(helpers.convert24HourTimeStringTo12HourTimeString(start_times[x]),
 			    helpers.convert24HourTimeStringTo12HourTimeString(end_times[x]), week_hoaras[0][x],
@@ -38,4 +38,5 @@ def hoara(request, sunrise, sunset):
 			    week_hoaras[3][x], week_hoaras[4][x], week_hoaras[5][x], week_hoaras[6][x]) for x in range(0, 24)]
 
 	return render(request, 'hoara.html', {'sunrise_time': sunrise, 'sunset_time': sunset,
-							  'zipped_list': zipped_list, 'hoara_dict': hoara_dict})
+							  'zipped_list': zipped_list, 'hoara_dict': hoara_dict,
+							  'telugu_hoaras': telugu_hoaras})

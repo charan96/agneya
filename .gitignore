@@ -1,2 +1,4 @@
 *.pyc
 config.txt
+app.yaml
+main.py

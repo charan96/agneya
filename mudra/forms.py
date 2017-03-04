@@ -7,18 +7,19 @@ import helpers
 
 
 class submit_form(forms.Form):
-	list_to_twentyfour = [(str(x).zfill(2), str(x).zfill(2)) for x in range(0, 24)]
+	list_of_hours_with_AMPM = helpers.formChoicesHourList()
+	list_to_twentyfour = [(str(x).zfill(2), list_of_hours_with_AMPM[x]) for x in range(0, 24)]
 	list_to_sixty = [(str(x).zfill(2), str(x).zfill(2)) for x in range(0, 60)]
 
 	sunrise_hour = forms.ChoiceField(choices=list_to_twentyfour, required=True, label='sunrise-hour',
-						   initial=str(datetime.datetime.now().hour).zfill(2))
+						   initial='06')
 	sunrise_min = forms.ChoiceField(choices=list_to_sixty, required=True, label='sunrise-min',
 						  initial=str(datetime.datetime.now().minute).zfill(2))
 	sunrise_sec = forms.ChoiceField(choices=list_to_sixty, required=True, label='sunrise-sec',
 						  initial=0)
 
 	sunset_hour = forms.ChoiceField(choices=list_to_twentyfour, required=True, label='sunset-hour',
-						  initial=str((datetime.datetime.now().hour + 12) % 24).zfill(2))
+						  initial='18')
 	sunset_min = forms.ChoiceField(choices=list_to_sixty, required=True, label='sunset-min',
 						 initial=str(datetime.datetime.now().minute).zfill(2))
 	sunset_sec = forms.ChoiceField(choices=list_to_sixty, required=True, label='sunset-sec',
