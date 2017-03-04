@@ -14,12 +14,22 @@
 <body>
     <h1 class="text-center text-primary"><a href="/agneya" style="text-decoration:none">Agneya</a></h1><hr>
 
-
-    {% block content %}
-        <div class="col-lg-4 col-lg-offset-4 text-center">
-                {% crispy form %}
+    <div>
+        <div style="inline; float:right">
+            <br><br><br><br>
+            <iframe
+                src="http://www.mypanchang.com/mypanchangwidget.php"
+                scrolling="no" width="275px" height="240px" frameborder="0"
+                style="border:none;text-align:center" allowTransparency="true">
+            </iframe>
         </div>
-    {% endblock %}
+
+        {% block content %}
+            <div class="col-lg-4 col-lg-offset-4 text-center" style="inline">
+                    {% crispy form %}
+            </div>
+        {% endblock %}
+    </div>
 
 
 </body>
