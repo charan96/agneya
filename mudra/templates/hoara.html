@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Agneya</title>
+    <!--<link rel="stylesheet" href="{% static '/hoara-css.css' %}">-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
@@ -15,15 +16,8 @@
 <body>
     <h1 class="text-center text-primary"><a href="/agneya" style="text-decoration:none">Agneya</a></h1><hr>
 
-    <!--<p align="center">{{ sunrise_time }}</p>
-    <p align="center">{{ sunset_time }}</p>
-
-    {% for item in hoara_list %}
-        <p>{{ item }}</p>
-    {% endfor %}-->
-
-    <div class="table-responsive">
-        <table class="table table-bordered text-center table-hover">
+    <div class="table-responsive panel-heading panel-default">
+        <table class="table table-bordered text-center table-hover" style="table-layout:fixed">
             <thead>
                    <tr>
                        <th>Start Time</th>

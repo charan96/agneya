@@ -13,6 +13,13 @@ def convertTimeDeltaToString(timedelta_object):
 	return datetime.time(0, 0, timedelta_object.seconds).strftime('%H:%M:%S')
 
 
+def convert24HourTimeStringTo12HourTimeString(time_string):
+	temp = datetime.datetime.strptime(time_string, '%H:%M:%S')
+	temp = datetime.datetime.strftime(temp, '%I:%M %p')
+
+	return temp
+
+
 def sanitizeTimes(sunrise, sunset):
 	sunrise = convertStringToDatetime(sunrise)
 	sunset = convertStringToDatetime(sunset)
