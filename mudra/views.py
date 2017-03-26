@@ -18,7 +18,9 @@ def index(request):
 							str(request.POST.get('sunset_min', '')),
 							str(request.POST.get('sunset_sec', ''))])
 
-			helpers.sanitizeTimes(sunrise_time, sunset_time)
+			# check if input times are valid i.e, sunset atleast 4 hrs after sunrise
+			if not helpers.validateInputTimes(sunrise_time, sunset_time):
+				return render(request, 'error.html', {})
 
 			return hoara(request, sunrise_time, sunset_time)
 

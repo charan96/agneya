@@ -27,21 +27,20 @@ def formChoicesHourList():
 
 	temp_list.append('12 PM')
 
-	for x in range(13, 24):
-		temp_list.append(str(x % 12) + " PM")
+	for x in range(1, 12):
+		temp_list.append(str(x) + " PM")
 
 	return temp_list
 
 
-def sanitizeTimes(sunrise, sunset):
+def validateInputTimes(sunrise, sunset):
 	sunrise = convertStringToDatetime(sunrise)
 	sunset = convertStringToDatetime(sunset)
 
 	if (sunset - sunrise) > datetime.timedelta(hours=4) and sunset > sunrise:
-		pass
+		return True
 	else:
-		# TODO: redirect to error page
-		sys.exit(0)
+		return False
 
 
 def getDayHoaraTime(sunrise, sunset):

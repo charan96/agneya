@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ca1kq_)o2w9x47!lj(+t!@q9rjanmti!ulsy(6iaf37gv&_(p@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['horachakra.appspot.com','localhost']
 
 
 # Application definition

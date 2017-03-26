@@ -1,5 +1,6 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
+{% load static %}
 {% load getDictVal %}
 
 <!DOCTYPE html>
@@ -7,29 +8,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Agneya</title>
-    <!--<link rel="stylesheet" href="{% static '/hoara-css.css' %}">-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">-->
+    <style type="text/css">
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #EDEDED;
+        }
+
+
+    </style>
 </head>
 
 <body>
-    <h1 class="text-center text-primary"><a href="/agneya" style="text-decoration:none">Agneya</a></h1><hr>
+    <h1 class="text-center text-primary"><a href="/" style="text-decoration:none">Agneya</a></h1><hr>
 
     <div class="table-responsive panel-heading panel-default">
         <table class="table table-bordered text-center table-hover" style="table-layout:fixed">
             <thead>
-                   <tr>
-                       <th>Start Time</th>
-                       <th>End Time</th>
-                       <th>Sunday</th>
-                       <th>Monday</th>
-                       <th>Tuesday</th>
-                       <th>Wednesday</th>
-                       <th>Thursday</th>
-                       <th>Friday</th>
-                       <th>Saturday</th>
-                   </tr>
+               <tr>
+                   <th>Start Time</th>
+                   <th>End Time</th>
+                   <th>Sunday</th>
+                   <th>Monday</th>
+                   <th>Tuesday</th>
+                   <th>Wednesday</th>
+                   <th>Thursday</th>
+                   <th>Friday</th>
+                   <th>Saturday</th>
+               </tr>
             </thead>
             <tbody>
                 {% for start_time, end_time, sun, mon, tue, wed, thu, fri, sat in zipped_list %}
